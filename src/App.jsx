@@ -138,7 +138,7 @@ const App = () => {
             Open to software development opportunities.
           </p>
           <a 
-            href="mailto:contact@example.com" 
+            href="mailto:contact@elijahmandajc@gmail.com" 
             className="inline-block bg-blue-500 hover:bg-blue-600 text-white px-8 py-3 rounded-lg transition-colors"
           >
             Contact Me
