@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Menu, X, Github, Linkedin, Mail, ExternalLink, Code2, Database, Terminal } from 'lucide-react';
+import { Menu, X, Github, Linkedin, ExternalLink, Code2 } from 'lucide-react';
 
 
 const App = () => {
