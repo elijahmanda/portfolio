@@ -76,7 +76,7 @@ const App = () => {
         <div className="max-w-3xl mx-auto  translate-y-10">
           <h2 className="text-3xl font-bold mb-8 font-mono">About Me</h2>
           <p className="text-gray-300 leading-relaxed mb-6">
-            I'm Elijah Manda, a developer specializing in scientific software, research tools, mobile app development, web development, and game development.
+            I'm Elijah Manda, a software developer specializing in scientific software, research tools, mobile app development, web development, and game development.
           </p>
         </div>
       </section>
