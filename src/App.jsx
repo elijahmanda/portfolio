@@ -98,6 +98,7 @@ const App = () => {
         </div>
       </section>
 
+
       {/* Projects Section */}
       <section id="projects" className="py-16 px-4 bg-gray-800/50 transition-all duration-700">
         <div className="max-w-7xl mx-auto  translate-y-10">
