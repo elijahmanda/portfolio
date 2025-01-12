@@ -1,9 +1,8 @@
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import {
   Menu,
   X,
   Github,
-  Linkedin,
   Twitter,
   Instagram,
   Facebook,
@@ -16,12 +15,8 @@ import {
 } from "lucide-react";
 import {
   motion,
-  AnimatePresence,
-  useMotionValue,
-  useTransform,
-  useSpring,
+  AnimatePresence
 } from "framer-motion";
-import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import profileImage from './assets/profile.png';
 
 
@@ -96,7 +91,7 @@ const App = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-indigo-900 to-gray-900">
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 to-gray-800 text-gray-100">
     
        {/* Navigation */}
       <nav className="fixed w-full bg-gray-900/80 backdrop-blur-sm z-50">
