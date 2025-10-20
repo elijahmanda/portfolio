@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Menu, X, Github, Mail, ExternalLink, ArrowUpRight, Code, Database, Zap, Globe, Lock } from "lucide-react";
+import { Menu, X, Github, Mail, ExternalLink, ArrowUpRight, Code, Database, Zap, Globe, Lock, MapPin, Clock } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const LoadingScreen = ({ isLoading }) => {
@@ -41,7 +41,21 @@ export default function App() {
 
   const projects = [
     {
+      name: "Palazzo San Lorenzo",
+      tagline: "Where Medieval Luxury Meets Modern Comfort",
+      status: "public",
+      year: "2025",
+      role: "Web Designer & Developer",
+      description: "Complete WordPress site redesign for a luxury 5-star accommodation in Bergamo Alta. Modern, elegant landing page showcasing a historic palazzo with immersive imagery and intuitive booking flow. Features responsive design, optimized performance, and professional hospitality branding.",
+      tags: ["Web Design", "UX/UI", "WordPress", "Hospitality"],
+      technologies: ["WordPress", "HTML", "CSS", "JavaScript"],
+      link: "https://sanlorenzobnb.great-site.net/?i=1",
+      repo: "public",
+      image: "🏛️",
+    },
+    {
       name: "Symbolic",
+      tagline: "Mathematical Programming Language",
       status: "private",
       year: "2024",
       role: "Creator",
@@ -50,9 +64,11 @@ export default function App() {
       technologies: ["Python", "C++", "Cython"],
       link: "https://elijahmanda.github.io/symbolic-docs",
       repo: "docs",
+      image: "∑",
     },
     {
       name: "Sensor Dash",
+      tagline: "Real-time Data Acquisition & Analysis",
       status: "private",
       year: "2024",
       role: "Developer",
@@ -61,9 +77,11 @@ export default function App() {
       technologies: ["Python", "NumPy", "Scientific Computing"],
       link: "https://github.com/elijahmanda/Sensor-Dash",
       repo: "request",
+      image: "📊",
     },
     {
       name: "Pakashop",
+      tagline: "E-commerce Platform",
       status: "private",
       year: "2023",
       role: "Creator",
@@ -72,9 +90,11 @@ export default function App() {
       technologies: ["React", "Node.js", "Tailwind CSS"],
       link: "https://github.com/elijahmanda/ecommerce-app",
       repo: "request",
+      image: "🛍️",
     },
     {
       name: "NLP Entity Extraction",
+      tagline: "Text Analysis & Entity Recognition",
       status: "public",
       year: "2023",
       role: "Creator",
@@ -83,6 +103,7 @@ export default function App() {
       technologies: ["Python", "Regex", "Tokenization"],
       link: "https://github.com/elijahmanda/NLP",
       repo: "public",
+      image: "📝",
     },
   ];
 
@@ -94,7 +115,7 @@ export default function App() {
     },
     frontend: {
       title: "Frontend & Web",
-      items: ["React", "Tailwind CSS", "Responsive Design", "JavaScript", "Web Performance", "UI/UX"],
+      items: ["React", "Tailwind CSS", "Responsive Design", "JavaScript", "Web Performance", "WordPress"],
       icon: Globe,
     },
     data: {
@@ -180,16 +201,19 @@ export default function App() {
               className="md:hidden bg-white border-t border-black/5"
             >
               <div className="px-6 py-4 space-y-4">
-                {navItems.map((item) => (
-                  <a
-                    key={item}
-                    href={`#${item.toLowerCase()}`}
-                    onClick={() => setIsMenuOpen(false)}
-                    className="block text-sm font-light tracking-wide hover:text-gray-600 w-full text-left"
-                  >
-                    {item}
-                  </a>
-                ))}
+                {navItems.map((item) => {
+                  const sectionId = item === "Work" ? "work" : item === "Skills" ? "skills" : item === "About" ? "about" : "contact";
+                  return (
+                    <a
+                      key={item}
+                      href={`#${sectionId}`}
+                      onClick={() => setIsMenuOpen(false)}
+                      className="block text-sm font-light tracking-wide hover:text-gray-600 w-full text-left"
+                    >
+                      {item}
+                    </a>
+                  );
+                })}
               </div>
             </motion.div>
           )}
@@ -205,13 +229,36 @@ export default function App() {
             transition={{ duration: 0.8 }}
             className="space-y-8"
           >
-            <div>
-              <h1 className="text-5xl md:text-7xl font-light tracking-tight leading-tight">
-                Elijah Manda
-              </h1>
-              <p className="text-xl md:text-2xl font-light text-gray-600 mt-4">
-                Software Developer & Language Designer
-              </p>
+            {/* Profile Info */}
+            <div className="flex flex-col md:flex-row gap-8 items-start md:items-center mb-8">
+              <motion.img
+                src="https://raw.githubusercontent.com/elijahmanda/portfolio/refs/heads/main/src/assets/profile.png"
+                alt="Elijah Manda"
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.6 }}
+                className="w-32 h-32 rounded-lg object-cover flex-shrink-0 border border-black/10 shadow-sm"
+              />
+
+              <div className="flex-1">
+                <h1 className="text-5xl md:text-6xl font-light tracking-tight leading-tight mb-4">
+                  Elijah Manda
+                </h1>
+                <p className="text-xl md:text-2xl font-light text-gray-600 mb-4">
+                  Software Developer & Language Designer
+                </p>
+
+                <div className="flex flex-col gap-2 text-sm text-gray-600 font-light">
+                  <div className="flex items-center gap-2">
+                    <MapPin size={16} className="flex-shrink-0" />
+                    <span>Chipata, Eastern Province, Zambia</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Clock size={16} className="flex-shrink-0" />
+                    <span>CAT (UTC+2)</span>
+                  </div>
+                </div>
+              </div>
             </div>
 
             <p className="text-lg text-gray-700 leading-relaxed max-w-2xl font-light">
@@ -261,80 +308,93 @@ export default function App() {
             Projects
           </motion.h2>
 
-          <div className="space-y-8">
+          <div className="space-y-6">
             {projects.map((project, i) => (
-              <motion.div
+              <motion.a
                 key={i}
+                href={project.link}
+                target="_blank"
+                rel="noopener noreferrer"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: i * 0.1 }}
+                transition={{ duration: 0.5, delay: i * 0.08 }}
                 viewport={{ once: true }}
-                className="group p-8 bg-white border border-black/5 hover:border-black/20 transition-all duration-300"
+                whileHover={{ y: -2 }}
+                className="group block bg-white border border-black/5 hover:border-black/15 transition-all duration-300 overflow-hidden"
               >
-                <div className="flex items-start justify-between mb-6">
-                  <div className="flex-1 space-y-2">
-                    <div className="flex items-center gap-3">
-                      <p className="text-sm text-gray-500 font-light tracking-wide">{project.year}</p>
-                      <div className="flex items-center gap-2">
-                        {project.status === "public" ? (
-                          <span className="text-xs px-2 py-1 bg-green-50 text-green-700 font-light tracking-wide rounded">
-                            Public
-                          </span>
-                        ) : project.repo === "docs" ? (
-                          <span className="text-xs px-2 py-1 bg-blue-50 text-blue-700 font-light tracking-wide rounded flex items-center gap-1">
-                            <Lock size={12} />
-                            Docs Open Source
-                          </span>
-                        ) : (
-                          <span className="text-xs px-2 py-1 bg-gray-100 text-gray-600 font-light tracking-wide rounded flex items-center gap-1">
-                            <Lock size={12} />
-                            {project.repo === "request" ? "Access on request" : "Private"}
-                          </span>
-                        )}
+                <div className="flex flex-col md:flex-row">
+                  {/* Image/Icon */}
+                  <div className="w-full md:w-48 h-48 bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center flex-shrink-0 border-b md:border-b-0 md:border-r border-black/5">
+                    <span className="text-6xl group-hover:scale-110 transition-transform duration-300">{project.image}</span>
+                  </div>
+
+                  {/* Content */}
+                  <div className="flex-1 p-8 flex flex-col justify-between">
+                    <div>
+                      <div className="flex items-center justify-between mb-4">
+                        <div>
+                          <div className="flex items-center gap-3 mb-2">
+                            <p className="text-xs text-gray-500 font-light tracking-widest uppercase">{project.year}</p>
+                            <div className="flex items-center gap-2">
+                              {project.status === "public" ? (
+                                <span className="text-xs px-2 py-1 bg-green-50 text-green-700 font-light tracking-wide rounded">
+                                  Public
+                                </span>
+                              ) : project.repo === "docs" ? (
+                                <span className="text-xs px-2 py-1 bg-blue-50 text-blue-700 font-light tracking-wide rounded flex items-center gap-1">
+                                  <Lock size={12} />
+                                  Docs Open Source
+                                </span>
+                              ) : (
+                                <span className="text-xs px-2 py-1 bg-gray-100 text-gray-600 font-light tracking-wide rounded flex items-center gap-1">
+                                  <Lock size={12} />
+                                  {project.repo === "request" ? "Access on request" : "Private"}
+                                </span>
+                              )}
+                            </div>
+                          </div>
+                          <h3 className="text-2xl font-light tracking-tight mb-1">{project.name}</h3>
+                          <p className="text-sm text-gray-600 font-light italic mb-3">{project.tagline}</p>
+                        </div>
+                        <motion.div
+                          className="text-gray-300 group-hover:text-black transition-colors flex-shrink-0 hidden md:block"
+                          whileHover={{ x: 2, y: -2 }}
+                        >
+                          <ExternalLink size={20} />
+                        </motion.div>
+                      </div>
+
+                      <p className="text-gray-700 leading-relaxed mb-6 font-light text-sm">
+                        {project.description}
+                      </p>
+                    </div>
+
+                    <div className="space-y-3 border-t border-black/5 pt-6">
+                      <div>
+                        <p className="text-xs font-medium tracking-widest text-gray-500 mb-2">TECHNOLOGIES</p>
+                        <div className="flex flex-wrap gap-2">
+                          {project.technologies.map((tech, idx) => (
+                            <span key={idx} className="text-xs px-2 py-1 bg-gray-100 text-gray-700 font-light tracking-wide rounded">
+                              {tech}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+
+                      <div>
+                        <p className="text-xs font-medium tracking-widest text-gray-500 mb-2">FOCUS</p>
+                        <div className="flex flex-wrap gap-2">
+                          {project.tags.map((tag, idx) => (
+                            <span key={idx} className="text-xs px-2 py-1 bg-gray-50 text-gray-600 font-light">
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
                       </div>
                     </div>
-                    <h3 className="text-3xl font-light tracking-tight">{project.name}</h3>
-                    <p className="text-sm text-gray-600 font-light">{project.role}</p>
-                  </div>
-                  <motion.a
-                    href={project.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-gray-400 group-hover:text-black transition-colors flex-shrink-0"
-                    whileHover={{ x: 4, y: -4 }}
-                  >
-                    <ExternalLink size={20} />
-                  </motion.a>
-                </div>
-
-                <p className="text-gray-700 leading-relaxed mb-6 font-light">
-                  {project.description}
-                </p>
-
-                <div className="space-y-4">
-                  <div>
-                    <p className="text-xs font-medium tracking-widest text-gray-500 mb-2">TECHNOLOGIES</p>
-                    <div className="flex flex-wrap gap-2">
-                      {project.technologies.map((tech, idx) => (
-                        <span key={idx} className="text-xs px-3 py-1 bg-gray-100 text-gray-700 font-light tracking-wide">
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div>
-                    <p className="text-xs font-medium tracking-widest text-gray-500 mb-2">FOCUS AREAS</p>
-                    <div className="flex flex-wrap gap-2">
-                      {project.tags.map((tag, idx) => (
-                        <span key={idx} className="text-xs px-3 py-1 bg-gray-50 text-gray-600 font-light">
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
                   </div>
                 </div>
-              </motion.div>
+              </motion.a>
             ))}
           </div>
         </div>
@@ -361,15 +421,16 @@ export default function App() {
                   key={key}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: i * 0.1 }}
+                  transition={{ duration: 0.5, delay: i * 0.1 }}
                   viewport={{ once: true }}
-                  className="p-6 border border-black/5 hover:border-black/20 transition-all duration-300"
+                  whileHover={{ y: -2 }}
+                  className="p-6 border border-black/5 hover:border-black/15 transition-all duration-300"
                 >
                   <div className="flex items-center gap-3 mb-4">
                     <Icon size={20} className="text-gray-400" />
                     <h3 className="text-lg font-light tracking-tight">{skill.title}</h3>
                   </div>
-                  <p className="text-gray-600 font-light leading-relaxed">
+                  <p className="text-gray-600 font-light leading-relaxed text-sm">
                     {skill.items.join(" • ")}
                   </p>
                 </motion.div>
@@ -460,59 +521,45 @@ export default function App() {
             viewport={{ once: true }}
             className="text-gray-600 font-light mb-12 text-lg"
           >
-            Interested in discussing projects, research, or opportunities? I'm available for consulting, collabora             }}
-                  transition={{ type: "spring", stiffness: 100 }}
-                  className="bg-gray-800/30 rounded-lg p-6 border border-gray-700/50 transform perspective-1000"
-                >
-                  <div className="text-blue-400">{project.icon}</div>
-                  <h3 className="text-xl font-semibold mb-3">{project.title}</h3>
-                  <p className="text-gray-400 mb-4">{project.description}</p>
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {project.tags.map((tag, tagIndex) => (
-                      <span key={tagIndex} className="text-sm bg-blue-500/10 text-blue-300 px-3 py-1 rounded-full">
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                  <motion.a
-                    href={project.link}
-                    whileHover={{ x: 5 }}
-                    className="inline-flex items-center text-blue-400 hover:text-blue-300"
-                  >
-                    View Project <ExternalLink size={16} className="ml-1" />
-                  </motion.a>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </motion.section>
-      </ParallaxSection>
-      {/* Projects End */}
+            Interested in discussing projects, research, or opportunities? I'm available for consulting, collaborations, and technical conversations.
+          </motion.p>
 
-    {/* Contact Start */}
-    <motion.section 
-        id="contact"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        className="py-16 px-4"
-      >
-        <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-8 font-mono">
-            <TextScramble text="Get In Touch" />
-          </h2>
-          <p className="text-gray-300 mb-8">
-            Open to software development opportunities</p>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true }}
+            className="flex flex-col sm:flex-row items-center justify-center gap-8"
+          >
+            <motion.a
+              href="mailto:elijahmandajc@gmail.com"
+              whileHover={{ x: 4 }}
+              className="flex items-center gap-2 text-lg font-medium tracking-wide group"
+            >
+              elijahmandajc@gmail.com
+              <ArrowUpRight size={18} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+            </motion.a>
+
+            <div className="hidden sm:block w-px h-6 bg-gray-300" />
+
+            <motion.a
+              href="https://zm.linkedin.com/in/elijah-manda-9544b5380"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ x: 4 }}
+              className="flex items-center gap-2 text-lg font-medium tracking-wide group"
+            >
+              LinkedIn
+              <ArrowUpRight size={18} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+            </motion.a>
+          </motion.div>
         </div>
-      </motion.section>
-      {/* Contact End */}
+      </section>
 
       {/* Footer */}
-      <footer className="py-8 px-4 text-center text-gray-400">
+      <footer className="py-12 px-6 lg:px-8 border-t border-black/5 text-center text-sm text-gray-500 font-light tracking-wide">
         <p>© 2025 Elijah Manda. All rights reserved.</p>
       </footer>
     </div>
   );
-};
-
-export default App;
+}
