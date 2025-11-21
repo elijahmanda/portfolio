@@ -231,14 +231,14 @@ export default function App() {
           >
             {/* Profile Info */}
             <div className="flex flex-col md:flex-row gap-8 items-start md:items-center mb-8">
-              <motion.img
+              {/* <motion.img
                 src="https://raw.githubusercontent.com/elijahmanda/portfolio/refs/heads/main/src/assets/profile.png"
                 alt="Elijah Manda"
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.6 }}
                 className="w-32 h-32 rounded-lg object-cover flex-shrink-0 border border-black/10 shadow-sm"
-              />
+              /> */}
 
               <div className="flex-1">
                 <h1 className="text-5xl md:text-6xl font-light tracking-tight leading-tight mb-4">
