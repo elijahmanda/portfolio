@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Menu, X, Github, Mail, ExternalLink, ArrowUpRight, Code, Database, Zap, Globe, Lock, MapPin, Clock } from "lucide-react";
+import { Menu, X, Github, Mail, Linkedin, ExternalLink, ArrowUpRight, Code, Database, Zap, Globe, Lock, MapPin, Clock } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const LoadingScreen = ({ isLoading }) => {
@@ -132,7 +132,7 @@ export default function App() {
 
   const socials = [
     { name: "GitHub", url: "https://github.com/elijahmanda", icon: Github },
-    { name: "LinkedIn", url: "https://zm.linkedin.com/in/elijah-manda-9544b5380", icon: null },
+    { name: "LinkedIn", url: "https://zm.linkedin.com/in/elijah-manda-9544b5380", icon: Linkedin },
     { name: "Email", url: "mailto:elijahmandajc@gmail.com", icon: Mail },
   ];
 
