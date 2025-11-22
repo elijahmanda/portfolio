@@ -88,7 +88,7 @@ export default function App() {
       description: "Comprehensive e-commerce platform designed to streamline the process of building, deploying, and managing digital storefronts. Provides developers and shop owners with a flexible, scalable foundation for selling products and services online with integrated payment processing, inventory management, and admin dashboard.",
       tags: ["E-commerce", "Full Stack", "Web Application"],
       technologies: ["React", "Node.js", "Tailwind CSS"],
-      link: "https://github.com/elijahmanda/ecommerce-app",
+      link: "https://pakashop.vercel.app",
       repo: "request",
       image: "🛍️",
     },
