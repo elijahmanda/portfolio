@@ -115,13 +115,13 @@ export default function App() {
                   Elijah Manda
                 </h1>
                 <p className="text-xl md:text-2xl font-light text-gray-600 mb-4">
-                  Software Developer & Language Designer
+                  Software Developer
                 </p>
 
                 <div className="flex flex-col gap-2 text-sm text-gray-600 font-light">
                   <div className="flex items-center gap-2">
                     <MapPin size={16} className="flex-shrink-0" />
-                    <span>Chipata, Eastern Province, Zambia</span>
+                    <span>Lusaka, Lusaka Province, Zambia</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <Clock size={16} className="flex-shrink-0" />
