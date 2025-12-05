@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Menu, X, Github, Mail, Linkedin, Instagram, ExternalLink, ArrowUpRight, Code, Database, Zap, Globe, Lock, MapPin, Clock } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
-import { LoadingScreen } from "./components/LoadingScreen.jsx"
+import LoadingScreen from "./components/LoadingScreen";
 import { projects, skills, socials } from "./constants";
 
 export default function App() {
