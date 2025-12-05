@@ -2,33 +2,8 @@ import { useState, useEffect } from "react";
 import { Menu, X, Github, Mail, Linkedin, Instagram, ExternalLink, ArrowUpRight, Code, Database, Zap, Globe, Lock, MapPin, Clock } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
-const LoadingScreen = ({ isLoading }) => {
-  return (
-    <AnimatePresence>
-      {isLoading && (
-        <motion.div
-          initial={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.5 }}
-          className="fixed inset-0 bg-white z-50 flex items-center justify-center"
-        >
-          <motion.div
-            animate={{ width: ["0%", "100%"] }}
-            transition={{ duration: 1.5, ease: "easeInOut" }}
-            className="h-1 bg-black absolute top-0 left-0"
-          />
-          <motion.p
-            animate={{ opacity: [0, 1, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity }}
-            className="text-sm text-gray-600 font-light tracking-widest"
-          >
-            LOADING
-          </motion.p>
-        </motion.div>
-      )}
-    </AnimatePresence>
-  );
-};
+import { LoadingScreen } from "./components/LoadingScreen.jsx"
+import { projects, skills, socials } from "./constants";
 
 export default function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -39,105 +14,7 @@ export default function App() {
     return () => clearTimeout(timer);
   }, []);
 
-  const projects = [
-    {
-      name: "Palazzo San Lorenzo",
-      tagline: "Where Medieval Luxury Meets Modern Comfort",
-      status: "public",
-      year: "2025",
-      role: "Web Designer & Developer",
-      description: "Complete WordPress site redesign for a luxury 5-star accommodation in Bergamo Alta. Modern, elegant landing page showcasing a historic palazzo with immersive imagery and intuitive booking flow. Features responsive design, optimized performance, and professional hospitality branding.",
-      tags: ["Web Design", "UX/UI", "WordPress", "Hospitality"],
-      technologies: ["WordPress", "HTML", "CSS", "JavaScript"],
-      link: "https://sanlorenzobnb.great-site.net/?i=1",
-      repo: "public",
-      image: "🏛️",
-    },
-    {
-      name: "Symbolic",
-      tagline: "Mathematical Programming Language",
-      status: "private",
-      year: "2024",
-      role: "Creator",
-      description: "A high-level interpreted programming language engineered for mathematical expressiveness and symbolic computation. Features a multi-tiered execution engine (AST, bytecode, JIT) that seamlessly transitions from rapid prototyping to performance-optimized native code. Pluggable domain architecture enables specialized extensions for mathematics, physics, finance, and other computational domains.",
-      tags: ["Language Design", "Symbolic Computing", "Performance Optimization"],
-      technologies: ["Python", "C++", "Cython"],
-      link: "https://elijahmanda.github.io/symbolic-docs",
-      repo: "docs",
-      image: "∑",
-    },
-    {
-      name: "Sensor Dash",
-      tagline: "Real-time Data Acquisition & Analysis",
-      status: "private",
-      year: "2024",
-      role: "Developer",
-      description: "High-performance desktop application for real-time sensor data acquisition, analysis, and visualization. Engineered for scientific research, industrial monitoring, and IoT applications with multi-protocol sensor support (Serial, USB, Ethernet, Bluetooth), sub-millisecond precision real-time visualization, and advanced signal processing (FFT, filtering, anomaly detection).",
-      tags: ["Signal Processing", "Real-time Systems", "Data Visualization"],
-      technologies: ["Python", "NumPy", "Scientific Computing"],
-      link: "https://github.com/elijahmanda/Sensor-Dash",
-      repo: "request",
-      image: "📊",
-    },
-    {
-      name: "Pakashop",
-      tagline: "E-commerce Platform",
-      status: "private",
-      year: "2023",
-      role: "Creator",
-      description: "Comprehensive e-commerce platform designed to streamline the process of building, deploying, and managing digital storefronts. Provides developers and shop owners with a flexible, scalable foundation for selling products and services online with integrated payment processing, inventory management, and admin dashboard.",
-      tags: ["E-commerce", "Full Stack", "Web Application"],
-      technologies: ["React", "Node.js", "Tailwind CSS"],
-      link: "https://pakashop.vercel.app",
-      repo: "request",
-      image: "🛍️",
-    },
-    {
-      name: "NLP Entity Extraction",
-      tagline: "Text Analysis & Entity Recognition",
-      status: "public",
-      year: "2023",
-      role: "Creator",
-      description: "Multi-parser entity extraction NLP library providing comprehensive tools for text processing. Enables users to define custom entity parsers, tokenize text using regex patterns, and build sophisticated pipelines for extracting structured entities. Ideal for parsing emails, IP addresses, numbers, and domain-specific patterns.",
-      tags: ["Natural Language Processing", "Text Analysis", "Entity Recognition"],
-      technologies: ["Python", "Regex", "Tokenization"],
-      link: "https://github.com/elijahmanda/NLP",
-      repo: "public",
-      image: "📝",
-    },
-  ];
-
-  const skills = {
-    backend: {
-      title: "Backend & Systems",
-      items: ["Node.js", "Express", "Python", "C", "C++", "Java", "API Design", "Database Design"],
-      icon: Database,
-    },
-    frontend: {
-      title: "Frontend & Web",
-      items: ["React", "Tailwind CSS", "Responsive Design", "JavaScript", "Web Performance", "WordPress"],
-      icon: Globe,
-    },
-    data: {
-      title: "Data & Scientific",
-      items: ["NumPy", "Pandas", "Cython", "Signal Processing", "Data Analysis", "Scientific Computing"],
-      icon: Zap,
-    },
-    tools: {
-      title: "Tools & DevOps",
-      items: ["Git", "RESTful APIs", "Linux", "Problem Solving", "System Design", "Performance Optimization"],
-      icon: Code,
-    },
-  };
-
-  const socials = [
-    { name: "GitHub", url: "https://github.com/elijahmanda", icon: Github },
-    { name: "LinkedIn", url: "https://zm.linkedin.com/in/elijah-manda-9544b5380", icon: Linkedin },
-    { name: "Instagram", url: "https://www.instagram.com/elijahmandajc/", icon: Instagram },
-    { name: "X", url: "https://x.com/ElijahMandajc", icon: X },
-    { name: "Email", url: "mailto:elijahmandajc@gmail.com", icon: Mail },
-  ];
-
+  
   const navItems = ["Work", "Skills", "About", "Contact"];
 
   return (
@@ -233,15 +110,6 @@ export default function App() {
           >
             {/* Profile Info */}
             <div className="flex flex-col md:flex-row gap-8 items-start md:items-center mb-8">
-              {/* <motion.img
-                src="https://raw.githubusercontent.com/elijahmanda/portfolio/refs/heads/main/src/assets/profile.png"
-                alt="Elijah Manda"
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6 }}
-                className="w-32 h-32 rounded-lg object-cover flex-shrink-0 border border-black/10 shadow-sm"
-              /> */}
-
               <div className="flex-1">
                 <h1 className="text-5xl md:text-6xl font-light tracking-tight leading-tight mb-4">
                   Elijah Manda
