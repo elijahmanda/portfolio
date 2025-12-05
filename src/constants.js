@@ -1,3 +1,5 @@
+import { X, Github, Mail, Linkedin, Instagram, Code, Database, Zap, Globe } from "lucide-react";
+
 export const projects = [
 {
     name: "Symbolic",
