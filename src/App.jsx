@@ -165,6 +165,46 @@ export default function App() {
         </div>
       </section>
 
+      {/* Skills Section */}
+      <section id="skills" className="py-24 px-6 lg:px-8 border-t border-black/5">
+        <div className="max-w-5xl mx-auto">
+          <motion.h2
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="text-3xl md:text-4xl font-light tracking-tight mb-16"
+          >
+            Technical Skills
+          </motion.h2>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            {Object.entries(skills).map(([key, skill], i) => {
+              const Icon = skill.icon;
+              return (
+                <motion.div
+                  key={key}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: i * 0.1 }}
+                  viewport={{ once: true }}
+                  whileHover={{ y: -2 }}
+                  className="p-6 border border-black/5 hover:border-black/15 transition-all duration-300"
+                >
+                  <div className="flex items-center gap-3 mb-4">
+                    <Icon size={20} className="text-gray-400" />
+                    <h3 className="text-lg font-light tracking-tight">{skill.title}</h3>
+                  </div>
+                  <p className="text-gray-600 font-light leading-relaxed text-sm">
+                    {skill.items.join(" • ")}
+                  </p>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
       {/* Work Section */}
       <section id="work" className="py-24 px-6 lg:px-8 bg-gray-50 border-t border-black/5">
         <div className="max-w-5xl mx-auto">
@@ -270,45 +310,6 @@ export default function App() {
         </div>
       </section>
 
-      {/* Skills Section */}
-      <section id="skills" className="py-24 px-6 lg:px-8 border-t border-black/5">
-        <div className="max-w-5xl mx-auto">
-          <motion.h2
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="text-3xl md:text-4xl font-light tracking-tight mb-16"
-          >
-            Technical Skills
-          </motion.h2>
-
-          <div className="grid md:grid-cols-2 gap-8">
-            {Object.entries(skills).map(([key, skill], i) => {
-              const Icon = skill.icon;
-              return (
-                <motion.div
-                  key={key}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: i * 0.1 }}
-                  viewport={{ once: true }}
-                  whileHover={{ y: -2 }}
-                  className="p-6 border border-black/5 hover:border-black/15 transition-all duration-300"
-                >
-                  <div className="flex items-center gap-3 mb-4">
-                    <Icon size={20} className="text-gray-400" />
-                    <h3 className="text-lg font-light tracking-tight">{skill.title}</h3>
-                  </div>
-                  <p className="text-gray-600 font-light leading-relaxed text-sm">
-                    {skill.items.join(" • ")}
-                  </p>
-                </motion.div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
 
       {/* About Section */}
       <section id="about" className="py-24 px-6 lg:px-8 bg-gray-50 border-t border-black/5">
